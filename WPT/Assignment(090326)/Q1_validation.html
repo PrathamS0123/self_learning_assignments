@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<form name="f1" onsubmit="return validate()">
+Username: <input type="text" name="uname">
+Password: <input type="password" name="upass">
+<input type="submit" value="Submit">
+</form>
+
+<script>
+
+function validate()
+{
+    let name = document.forms["f1"]["uname"].value;
+    let pass = document.forms["f1"]["upass"].value;
+
+    if(name == "iet" && pass == "iet")
+    {
+        document.forms["f1"].action = "Home.html";
+        return true;
+    }
+
+    if(name.trim() == "" || name.length <= 2 || !isNaN(name))
+    {
+        alert("Username must be greater than 2 characters");
+        return false;
+    }
+
+    if(pass.trim() == "" || pass.length < 8 || pass.length > 12)
+    {
+        alert("Password must be between 8 and 12 characters");
+        return false;
+    }
+
+    alert("Submitted");
+    return true;
+}
+
+</script>
+
+</body>
+</html>

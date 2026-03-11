@@ -1,0 +1,64 @@
+<html>
+<head>
+</script>
+
+<script>
+
+function load()
+{
+
+	let req = new XMLHttpRequest();
+	
+	req.open("GET" , "https://fakestoreapi.com/products");
+	
+	req.send();
+	
+	
+	
+	req.onreadystatechange = function ()
+	{
+		console.log(this.status);
+		console.log(this.readyState);
+		if(this.readyState == 4 && this.status == 200)
+		
+		{
+			let data = JSON.parse(this.responseText);
+			
+			let table = document.getElementById("t1");
+			
+			for(let i = 0; i < data.length; i++)
+			{
+				let row = table.insertRow();
+
+				let c1 = row.insertCell(0);
+				let c2 = row.insertCell(1);
+				let c3 = row.insertCell(2);
+
+				c1.innerHTML = data[i].id;
+				c2.innerHTML = data[i].title;
+				c3.innerHTML = data[i].price;
+			}
+		}
+	}
+}
+	
+</script>
+</head>
+
+<body>
+
+<p id="p1"></p>
+
+<table id="t1" border="123">
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Price</th>
+</tr>
+</table>
+
+
+<button id="b1" onclick="load()">Show</button>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Student Data</title>
+</head>
+
+<body>
+
+<h3>Enter Student Details</h3>
+
+<label>Student ID</label>
+<input type="text" id="sid">
+
+<label>Student Name</label>
+<input type="text" id="sname">
+
+<button onclick="saveData()">Save</button>
+
+<br><br>
+
+<table border="10">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+
+    <tbody id="tableBody">
+
+    </tbody>
+</table>
+
+<script>
+
+let students = [];
+
+function saveData(){
+
+    let id = document.getElementById("sid").value;
+    let name = document.getElementById("sname").value;
+
+    // create object
+    let student = {
+        id: id,
+        name: name
+    };
+
+    students.push(student);
+
+    displayData();
+}
+
+function displayData(){
+
+    let rows = "";
+
+    students.forEach(function(s){
+
+        rows += `
+        <tr>
+            <td>${s.id}</td>
+            <td>${s.name}</td>
+        </tr>
+        `;
+
+    });
+
+    document.getElementById("tableBody").innerHTML = rows;
+}
+
+</script>
+
+</body>
+</html>

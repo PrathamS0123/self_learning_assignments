@@ -1,0 +1,43 @@
+<!-- 5) with calender control accept birthDate from user and display age -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Age Calculator</title>
+</head>
+
+<body>
+
+<h3>Select Birth Date</h3>
+
+<input type="date" id="birthdate">
+
+<button onclick="calculateAge()">Show Age</button>
+
+<p id="result"></p>
+
+<script>
+
+function calculateAge(){
+
+    let birthDate = document.getElementById("birthdate").value;
+
+    let birth = new Date(birthDate); // this will give you the exact date
+    let today = new Date();  // todays date
+
+    let age = today.getFullYear() - birth.getFullYear();
+
+    // adjust age if birthday hasn't occurred this year
+    let m = today.getMonth() - birth.getMonth();
+
+    if(m < 0 || (m === 0 && today.getDate() < birth.getDate())){
+        age--;
+    }
+
+    document.getElementById("result").innerText = "Age: " + age + " years";
+
+}
+
+</script>
+
+</body>
+</html>

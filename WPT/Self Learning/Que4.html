@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery assignment</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            
+            $("h1").click(function(){
+                $(this).css("display","none");
+            });
+			
+			$("h2").click(function(){
+                $(this).css("display","none");
+            });
+
+            $(document).mousemove(function(event){
+                $("#p1").text(
+                    "position X: " + event.pageX + 
+                    " , position Y: " + event.pageY
+                );
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+<h1 style:"display:block">hello1</h1>
+<h2 style:"display:block">hello2</h2>
+
+<p id="p1">mouse position</p>
+
+</body>
+</html>
